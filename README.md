@@ -40,6 +40,19 @@ POST
 http://localhost:3000/api/objects/:id/restore
 ```
 
+
+### Partial Restore an Object
+POST
+```bash
+http://localhost:3000/api/objects/:id/partial-restore
+```
+Body
+```bash
+{
+"startByte":0,
+"endByte":20
+}
+```
 ### Delete object
 DELETE
 ```bash
