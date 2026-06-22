@@ -1,5 +1,8 @@
 # Documentation for Archive Mediator
 
 ### Base URL
-bash 
+
+
+```bash
 http://localhost:3000/api
+```
