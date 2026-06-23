@@ -15,11 +15,16 @@ model Object {
   archiveStatus String   @default("ACTIVE")
   createdAt     DateTime @default(now())
   deletedAt     DateTime?
+
+  jobs          Job[]
+  auditlogs     AuditLog[]
+
 }
 
 model Job {
   id           String   @id @default(cuid())
-  objectId     String
+  objectId     String  
+  object       Object   @relation(fields:[objectId],references: [id])
   type         String   
   status       String   @default("QUEUED")
   startByte    Int?
@@ -32,6 +37,7 @@ model Job {
 model AuditLog {
   id        String   @id @default(cuid())
   objectId  String
+  object    Object   @relation(fields: [objectId], references: [id])
   action    String
   timestamp DateTime @default(now())
 }

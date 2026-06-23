@@ -188,7 +188,10 @@ router.get('/jobs', async (req, res) => {
   try {
     const jobs = await prisma.job.findMany({
       orderBy: { createdAt: 'desc' },
-      take: 50
+      take: 50,
+      include:{
+        object:true
+      }
     });
     res.json({ success: true, data: jobs });
   } catch (error) {
